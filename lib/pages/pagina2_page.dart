@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../models/usuario.dart';
+import '../services/usuario_service.dart';
+
 class Pagina2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,14 @@ class Pagina2Page extends StatelessWidget {
         children: [
           MaterialButton(
               color: Colors.blueAccent,
-              onPressed: () => print("click"),
+              onPressed: () {
+                final nuevoUsuario = Usuario(
+                  nombre: "Juan Perez",
+                  edad: 30,
+                  profesiones: ["Desarrollador"],
+                );
+                usuarioService.cargarUsuario(nuevoUsuario);
+              },
               child: const Text('Establecer Usuario',
                   style: TextStyle(color: Colors.white))),
           MaterialButton(
