@@ -35,7 +35,7 @@ class InformacionUsuario extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const Text(
             'General',
@@ -49,15 +49,14 @@ class InformacionUsuario extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const Divider(),
-          ListView.builder(
-              itemBuilder: (context, index) => ListTile(
-                    title: Text(usuario.profesiones![index]),
-                  ),
-              itemCount: usuario.profesiones!.length,
-              shrinkWrap: true),
-          // const ListTile(title: Text("Profesión 1: ")),
-          // const ListTile(title: Text("Profesión 1: ")),
-          // const ListTile(title: Text("Profesión 1: ")),
+          usuario.profesiones!.isNotEmpty
+              ? ListView.builder(
+                  itemBuilder: (context, index) => ListTile(
+                        title: Text(usuario.profesiones![index]),
+                      ),
+                  itemCount: usuario.profesiones!.length,
+                  shrinkWrap: true)
+              : Container(height: 0),
         ],
       ),
     );

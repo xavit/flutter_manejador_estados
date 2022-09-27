@@ -20,7 +20,9 @@ class Pagina2Page extends StatelessWidget {
                 final nuevoUsuario = Usuario(
                   nombre: "Juan Perez",
                   edad: 30,
-                  profesiones: ["Desarrollador"],
+                  profesiones: [
+                    "Músico",
+                  ],
                 );
                 usuarioService.cargarUsuario(nuevoUsuario);
               },
