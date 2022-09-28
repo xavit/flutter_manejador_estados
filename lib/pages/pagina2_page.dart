@@ -8,7 +8,14 @@ class Pagina2Page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Página 2'),
+        title: StreamBuilder(
+          stream: usuarioService.usuarioStream,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            return snapshot.hasData
+                ? Text("Usuario: ${snapshot.data.nombre}")
+                : const Text("Página 2");
+          },
+        ),
       ),
       body: Center(
           child: Column(
@@ -30,7 +37,9 @@ class Pagina2Page extends StatelessWidget {
                   style: TextStyle(color: Colors.white))),
           MaterialButton(
               color: Colors.blueAccent,
-              onPressed: () => print("click"),
+              onPressed: () {
+                usuarioService.cambiarEdad(20);
+              },
               child: const Text('Cambiar Edad',
                   style: TextStyle(color: Colors.white))),
           MaterialButton(
