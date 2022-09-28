@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_singleton/bloc/usuario/usuario_cubit.dart';
 
 class Pagina1Page extends StatelessWidget {
   @override
@@ -7,7 +9,15 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Página 1'),
       ),
-      body: const InformacionUsuario(),
+      body: BlocBuilder<UsuarioCubit, UsuarioStatate>(builder: (_, state) {
+        print(state);
+        if (state is UsuarioInitial) {
+          return const Center(child: Text('No hay info. de usuario'));
+        } else {
+          return const InformacionUsuario();
+        }
+        return const InformacionUsuario();
+      }),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.navigate_next),
           onPressed: () => Navigator.pushNamed(context, 'pagina2')),
