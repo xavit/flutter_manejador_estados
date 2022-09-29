@@ -13,7 +13,7 @@ class Pagina1Page extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () => usuarioCubit.borrarUsuario(),
-              icon: const Icon(Icons.navigate_next))
+              icon: const Icon(Icons.delete))
         ],
       ),
       body: const BodyScaffold(),
