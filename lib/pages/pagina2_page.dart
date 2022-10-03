@@ -14,29 +14,30 @@ class Pagina2Page extends StatelessWidget {
           MaterialButton(
               color: Colors.blueAccent,
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Usuario Establecido')));
+                showScaffoldMessenger(context, "Usuario Establecido");
               },
               child: const Text('Establecer Usuario',
                   style: TextStyle(color: Colors.white))),
           MaterialButton(
               color: Colors.blueAccent,
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Edad Modificada')));
+                showScaffoldMessenger(context, "Edad Modificada");
               },
               child: const Text('Cambiar Edad',
                   style: TextStyle(color: Colors.white))),
           MaterialButton(
               color: Colors.blueAccent,
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Profesión Añañida')));
+                showScaffoldMessenger(context, "Profesión añadida");
               },
               child: const Text('Añadir Profesión',
                   style: TextStyle(color: Colors.white))),
         ],
       )),
     );
+  }
+
+  showScaffoldMessenger(_, String message) {
+    ScaffoldMessenger.of(_).showSnackBar(SnackBar(content: Text(message)));
   }
 }

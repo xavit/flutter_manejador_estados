@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_singleton/bloc/user/user_bloc.dart';
 
 class Pagina1Page extends StatelessWidget {
   @override
@@ -9,17 +8,11 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Página 1'),
       ),
-      body: BlocBuilder<UserBloc, UserState>(
-        builder: (_, state) {
-          return state.existUser
-              ? const InformacionUsuario()
-              : const Center(
-                  child: Text(
-                    'Establecer Usuario',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                );
-        },
+      body: const Center(
+        child: Text(
+          'Establecer Usuario',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.navigate_next),
