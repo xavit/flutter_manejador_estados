@@ -32,6 +32,7 @@ class Pagina2Page extends StatelessWidget {
           MaterialButton(
               color: Colors.blueAccent,
               onPressed: () {
+                userBloc.add(ChangeUserAge(25));
                 showScaffoldMessenger(context, "Edad Modificada");
               },
               child: const Text('Cambiar Edad',
@@ -39,6 +40,8 @@ class Pagina2Page extends StatelessWidget {
           MaterialButton(
               color: Colors.blueAccent,
               onPressed: () {
+                userBloc.add(AddUserProfession(
+                    "New Profession ${userBloc.state.user!.profesiones!.length}"));
                 showScaffoldMessenger(context, "Profesión añadida");
               },
               child: const Text('Añadir Profesión',

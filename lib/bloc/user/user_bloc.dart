@@ -10,5 +10,25 @@ part 'user_state.dart';
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(const UserInitialState()) {
     on<ActivateUser>((event, emit) => emit(UserSetState(event.user)));
+
+    on<ChangeUserAge>((event, emit) {
+      if (!state.existUser) {
+        return;
+      }
+
+      emit(UserSetState(state.user!.copyWith(edad: event.newAge)));
+    });
+
+    on<AddUserProfession>((event, emit) {
+      if (!state.existUser) {
+        return;
+      }
+
+      final newUser = state.user!.copyWith(
+        profesiones: [...state.user!.profesiones!, event.newProfession],
+      );
+
+      emit(UserSetState(newUser));
+    });
   }
 }
