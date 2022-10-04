@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_singleton/bloc/user/user_bloc.dart';
+import 'package:flutter_singleton/models/usuario_model.dart';
 
 class Pagina1Page extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class Pagina1Page extends StatelessWidget {
       body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) {
           return state.existUser
-              ? const InformacionUsuario()
+              ? InformacionUsuario(user: state.user!)
               : const Center(child: Text('No existe usuario Seleccionado'));
         },
       ),
@@ -24,8 +25,10 @@ class Pagina1Page extends StatelessWidget {
 }
 
 class InformacionUsuario extends StatelessWidget {
+  final Usuario user;
   const InformacionUsuario({
     Key? key,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -36,22 +39,25 @@ class InformacionUsuario extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
+        children: [
+          const Text(
             'General',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          Divider(),
-          ListTile(title: Text("Nombre: ")),
-          ListTile(title: Text("Edad: ")),
-          Text(
+          const Divider(),
+          ListTile(title: Text("Nombre: ${user.nombre}")),
+          ListTile(title: Text("Edad: ${user.edad}")),
+          const Text(
             'Profesiones',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          Divider(),
-          ListTile(title: Text("Profesión 1: ")),
-          ListTile(title: Text("Profesión 1: ")),
-          ListTile(title: Text("Profesión 1: ")),
+          const Divider(),
+
+          ...user.profesiones!.map((e) => ListTile(title: Text(e))),
+
+          // const ListTile(title: Text("Profesión 1: ")),
+          // const ListTile(title: Text("Profesión 1: ")),
+          // const ListTile(title: Text("Profesión 1: ")),
         ],
       ),
     );
