@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_singleton/pages/pagina2_page.dart';
+import 'package:get/get.dart';
 
 class Pagina1Page extends StatelessWidget {
   @override
@@ -7,15 +9,11 @@ class Pagina1Page extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Página 1'),
       ),
-      body: const Center(
-        child: Text(
-          'Establecer Usuario',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      body: const InformacionUsuario(),
       floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.navigate_next),
-          onPressed: () => Navigator.pushNamed(context, 'pagina2')),
+        child: const Icon(Icons.navigate_next),
+        onPressed: () => Get.to(Pagina2Page()),
+      ),
     );
   }
 }
