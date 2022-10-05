@@ -23,7 +23,18 @@ class Pagina2Page extends StatelessWidget {
                 final Usuario nuevoUsuario = Usuario(
                     nombre: arguments['nombre'], edad: arguments['edad']);
                 usuarioCtrl.cargarUsuario(nuevoUsuario);
-                showScaffoldMessenger(context, "Usuario Establecido");
+                Get.snackbar("Usuario Cargado", "Se cargo el usuario",
+                    backgroundColor: Colors.green,
+                    borderColor: Colors.yellow,
+                    borderWidth: 2,
+                    boxShadows: [
+                      const BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 10,
+                          offset: Offset(0, 5))
+                    ],
+                    icon: const Icon(Icons.access_alarm));
+                // showScaffoldMessenger(context, "Usuario Establecido");
               },
               child: const Text('Establecer Usuario',
                   style: TextStyle(color: Colors.white))),
@@ -43,6 +54,14 @@ class Pagina2Page extends StatelessWidget {
                 showScaffoldMessenger(context, "Profesión añadida");
               },
               child: const Text('Añadir Profesión',
+                  style: TextStyle(color: Colors.white))),
+          MaterialButton(
+              color: Colors.blueAccent,
+              onPressed: () {
+                Get.changeTheme(
+                    Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+              },
+              child: const Text('Cambiar Tema',
                   style: TextStyle(color: Colors.white))),
         ],
       )),
